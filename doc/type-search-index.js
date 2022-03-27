@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"notepad","l":"Colour"},{"p":"notepad","l":"Edit"},{"p":"notepad","l":"File"},{"p":"notepad","l":"Format"},{"p":"notepad","l":"GUI"},{"p":"notepad","l":"KeyHandler"},{"p":"notepad","l":"Runner"}];updateSearchResults();
