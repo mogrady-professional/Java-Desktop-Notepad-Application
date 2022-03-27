@@ -44,12 +44,16 @@ public class GUI implements ActionListener {
 	public GUI() {
 		createWindow(); // Window
 		createTextArea(); // Text Area
-
+//			Menu
 		createMenuBar(); // Menu Bar
 		createFileMenu(); // File menu
 		createFormatMenu(); // Format Menu
 		window.setVisible(true);
 		window.setLocationRelativeTo(null); // Center Frame on Display
+//		Defaults
+		format.selectedFont = "Arial"; // default font
+		format.createFont(16);; // default font size
+		format.wordWrap();// Word Wrap
 	}
 
 	public void createWindow() {
@@ -196,12 +200,25 @@ public class GUI implements ActionListener {
 		String command = e.getActionCommand(); // Get setActionCommand -> New
 
 		switch (command) {
+//		File Methods
 		case "New" -> file.newFile();
 		case "Open" -> file.open();
 		case "Save" -> file.save();
 		case "SaveAs" -> file.saveAs();
 		case "Exit" -> file.exit(); // Exit Application
+//		Format Methods
 		case "Word Wrap" -> format.wordWrap(); // Word Wrap
+//		Font
+		case "Arial" -> format.setFont(command);
+		case "Comic Sans MS" -> format.setFont(command);
+		case "Times New Roman" -> format.setFont(command);
+//		Font Sizing
+		case "Size8" -> format.createFont(8); // pass in integer size
+		case "Size12" -> format.createFont(12); // pass in integer size
+		case "Size16" -> format.createFont(16); // pass in integer size
+		case "Size20" -> format.createFont(20); // pass in integer size
+		case "Size24" -> format.createFont(24); // pass in integer size
+		case "Size28" -> format.createFont(28); // pass in integer size
 		default -> throw new IllegalArgumentException("Unexpected value: " + command);
 		}
 
