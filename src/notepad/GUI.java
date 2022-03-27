@@ -16,6 +16,7 @@ public class GUI implements ActionListener {
 	JFrame window;
 //	Text Area
 	JTextArea textArea;
+	boolean wordWrapOn = false; // Word Wrap Disabled by Default
 //	Top Menu Bar
 	JScrollPane scrollPane; // Scroll Pane
 	JMenuBar menuBar; // Menu Bar
@@ -43,6 +44,7 @@ public class GUI implements ActionListener {
 	public GUI() {
 		createWindow(); // Window
 		createTextArea(); // Text Area
+
 		createMenuBar(); // Menu Bar
 		createFileMenu(); // File menu
 		createFormatMenu(); // Format Menu
@@ -198,7 +200,8 @@ public class GUI implements ActionListener {
 		case "Open" -> file.open();
 		case "Save" -> file.save();
 		case "SaveAs" -> file.saveAs();
-		case "Exit" -> file.exit();
+		case "Exit" -> file.exit(); // Exit Application
+		case "Word Wrap" -> format.wordWrap(); // Word Wrap
 		default -> throw new IllegalArgumentException("Unexpected value: " + command);
 		}
 
