@@ -26,11 +26,12 @@ public class GUI implements ActionListener {
 //	Format Menu
 	JMenuItem iWrap, iFontArial, iFontCSMS, iFontTNR, iFontSize8, iFontSize16, iFontSize20, iFontSize24, iFontSize28;
 	JMenu menuFont, menuFontSize;
-	
-	
-	
+//	Colour Menu
+	JMenuItem iColour1, iColour2, iColour3;
+
 	File file = new File(this); // File Menu
 	Format format = new Format(this); // Format Menu
+	Colour colour = new Colour(this); // Colour Menu
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -48,12 +49,16 @@ public class GUI implements ActionListener {
 		createMenuBar(); // Menu Bar
 		createFileMenu(); // File menu
 		createFormatMenu(); // Format Menu
-		window.setVisible(true);
-		window.setLocationRelativeTo(null); // Center Frame on Display
+		createColourMenu(); // Colour Menu
 //		Defaults
 		format.selectedFont = "Arial"; // default font
-		format.createFont(16);; // default font size
+		format.createFont(16);
+		; // default font size
 		format.wordWrap();// Word Wrap
+//		colour.changeColour("White");
+		
+		window.setVisible(true);
+		window.setLocationRelativeTo(null); // Center Frame on Display
 	}
 
 	public void createWindow() {
@@ -125,10 +130,9 @@ public class GUI implements ActionListener {
 		iExit.setActionCommand("Exit"); // setActionCommand
 		menuFile.add(iExit);
 	}
-	
+
 	/**
-	 * Format Menu
-	 * No need to add actionlistener as this is just JMenu
+	 * Format Menu No need to add actionlistener as this is just JMenu
 	 */
 	public void createFormatMenu() {
 //		Word Wrap
@@ -139,58 +143,79 @@ public class GUI implements ActionListener {
 //		Font
 		menuFont = new JMenu("Font");
 		menuFormat.add(menuFont);
-		
+
 //		Font Options
 		iFontArial = new JMenuItem("Arial");
 		iFontArial.addActionListener(this);
 		iFontArial.setActionCommand("Arial");
 		menuFont.add(iFontArial);
-		
+
 		iFontCSMS = new JMenuItem("Comic Sans MS");
 		iFontCSMS.addActionListener(this);
 		iFontCSMS.setActionCommand("Comic Sans MS");
 		menuFont.add(iFontCSMS);
-		
+
 		iFontTNR = new JMenuItem("Times New Roman");
 		iFontTNR.addActionListener(this);
 		iFontTNR.setActionCommand("Times New Roman");
 		menuFont.add(iFontTNR);
-		
+
 //		Font Sizing
-		
+
 //		Font Size
 		menuFontSize = new JMenu("Font Size");
 		menuFormat.add(menuFontSize); // Add to Menu
-		
+
 		iFontSize8 = new JMenuItem("8");
 		iFontSize8.addActionListener(this);
 		iFontSize8.setActionCommand("Size8");
 		menuFontSize.add(iFontSize8); // Add option to Menu
-		
+
 		iFontSize16 = new JMenuItem("16");
 		iFontSize16.addActionListener(this);
 		iFontSize16.setActionCommand("Size16");
 		menuFontSize.add(iFontSize16); // Add option to Menu
-		
+
 		iFontSize20 = new JMenuItem("20");
 		iFontSize20.addActionListener(this);
 		iFontSize20.setActionCommand("Size20");
 		menuFontSize.add(iFontSize20); // Add option to Menu
-		
+
 		iFontSize24 = new JMenuItem("24");
 		iFontSize24.addActionListener(this);
 		iFontSize24.setActionCommand("Size24");
 		menuFontSize.add(iFontSize24); // Add option to Menu
-		
+
 		iFontSize28 = new JMenuItem("28");
 		iFontSize28.addActionListener(this);
 		iFontSize28.setActionCommand("Size28");
 		menuFontSize.add(iFontSize28); // Add option to Menu
+
+	}
+
+	/**
+	 * Colour
+	 */
+	public void createColourMenu() {
+		iColour1 = new JMenuItem("White"); // Default
+		iColour1.addActionListener(this);
+		iColour1.setActionCommand("White");
+		menuColor.add(iColour1); 
 		
+		iColour2 = new JMenuItem("Black"); 
+		iColour2.addActionListener(this);
+		iColour2.setActionCommand("Black");
+		menuColor.add(iColour2); 
+		
+		iColour3 = new JMenuItem("Blue");
+		iColour3.addActionListener(this);
+		iColour3.setActionCommand("Blue");
+		menuColor.add(iColour3); 
 	}
 
 	/**
 	 * Menu
+	 * 
 	 * @param e event
 	 */
 	@Override
@@ -219,6 +244,9 @@ public class GUI implements ActionListener {
 		case "Size20" -> format.createFont(20); // pass in integer size
 		case "Size24" -> format.createFont(24); // pass in integer size
 		case "Size28" -> format.createFont(28); // pass in integer size
+		case "White" -> colour.changeColour(command); // pass in colour
+		case "Black" -> colour.changeColour(command); // pass in colour
+		case "Blue" -> colour.changeColour(command); // pass in colour
 		default -> throw new IllegalArgumentException("Unexpected value: " + command);
 		}
 
