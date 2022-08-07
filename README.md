@@ -1,6 +1,11 @@
 <img src="images/notepad.png" width="75" align="right"   alt="Application Logo"></a>
+<br><br>
 
 # Java Desktop Notepad Application
+
+<p align="center" >
+ <img src="images/notepad_psd.png"  height="auto">
+ </p>
 
 ## Table of Contents
 
